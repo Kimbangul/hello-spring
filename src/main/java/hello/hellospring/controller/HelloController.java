@@ -21,4 +21,30 @@ public class HelloController {
 		
 		return "hello-template";
 	}
+	
+	@GetMapping("hello-string")
+	@ResponseBody 
+	 // http통신 body부의 데이터를 직접  넣어주겠다 라는 뜻 
+	public String helloString (@RequestParam("name") String name) {
+		return "hello" + name;
+	}
+	
+	@GetMapping("hello-api")
+	@ResponseBody
+	public Hello HelloApi(@RequestParam("name") String name) {
+		Hello hello = new Hello();
+		hello.setName(name);
+		return hello; // 객체 리턴 
+	}
+	static class Hello{
+		private String name;
+		
+		public String getName() {
+			return name;
+		}
+		
+		public void setName(String name) {
+			this.name = name;
+		}
+	}
 }
