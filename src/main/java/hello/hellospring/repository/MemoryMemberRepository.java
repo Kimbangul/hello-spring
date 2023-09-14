@@ -27,7 +27,6 @@ public class MemoryMemberRepository implements MemberRepository {
 		return store.values().stream() //루프를 돌며 하나 찾아지면 반환
 		.filter(member -> member.getName().equals(name))
 		.findAny();
-		return Optional.empty();
 	}
 
 	@Override
@@ -35,4 +34,7 @@ public class MemoryMemberRepository implements MemberRepository {
 		return new ArrayList<>(store.values());
 	}
 
+	public void clearStore() {
+		store.clear();
+	}
 }
