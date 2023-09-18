@@ -11,7 +11,11 @@ public class MemberService {
 	//domain 은 단순한 데이터 입출력에 가까운 느낌인 반면 service 는 좀더 비즈니스에 가까운 느낌 
 	
 	// final : 재정의, 수정 불가 
-	private final MemberRepository memberRepository = new MemoryMemberRepository();
+	private final MemberRepository memberRepository;
+	
+	public MemberService(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
 	
 	// 회원 가입 
 	public Long Join(Member member) {
