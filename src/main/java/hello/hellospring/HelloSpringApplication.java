@@ -1,3 +1,4 @@
+// 여기 등록된 패키지의 하위를 뒤져서 스프링 bean으로 등록 (컴포넌트 스캔)
 package hello.hellospring;
 
 import org.springframework.boot.SpringApplication;

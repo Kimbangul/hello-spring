@@ -3,16 +3,22 @@ package hello.hellospring.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
 
+// 스프링이 스프링 컨테이너에 서비스를 등록
+@Service
 public class MemberService {
 	//domain 은 단순한 데이터 입출력에 가까운 느낌인 반면 service 는 좀더 비즈니스에 가까운 느낌 
 	
 	// final : 재정의, 수정 불가 
 	private final MemberRepository memberRepository;
 	
+	@Autowired
 	public MemberService(MemberRepository memberRepository) {
 		this.memberRepository = memberRepository;
 	}
