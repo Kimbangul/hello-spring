@@ -8,7 +8,6 @@ import hello.hellospring.domain.Member;
 
 // implements : 인터페이스를 구체적으로 구현하는 키워드 
 
-@Repository
 public class MemoryMemberRepository implements MemberRepository {
 	
 	private static Map<Long, Member> store = new HashMap<>();

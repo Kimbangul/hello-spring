@@ -7,7 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import hello.hellospring.domain.Member;
 
-@Repository
 public interface MemberRepository {
 	Member save(Member member);
 	
