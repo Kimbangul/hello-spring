@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import hello.hellospring.repository.MemberRepository;
+import hello.hellospring.repository.MemoryMemberRepository;
 import hello.hellospring.service.MemberService;
 
 @Configuration
@@ -12,7 +13,7 @@ public class SpringConfig{
 	// 스프링 빈을 직접 등록하겠다.
 	@Bean
 	public MemberService memberService() {
-		return new MemberService();
+		return new MemberService(memberRepository());
 	}
 	
 	@Bean

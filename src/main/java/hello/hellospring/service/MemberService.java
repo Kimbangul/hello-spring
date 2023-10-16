@@ -17,7 +17,7 @@ public class MemberService {
 	// final : 재정의, 수정 불가 
 	private final MemberRepository memberRepository;
 	
-	public MemberService(MemberRepository memberRepository) {
+	public MemberService(MemberRepository memberRepository) { // 생성자 주입
 		this.memberRepository = memberRepository;
 	}
 	
