@@ -36,7 +36,7 @@ class MemberServiceTest {
 		member.setName("spring");
 		
 		// when
-		Long saveId = memberService.Join(member);
+		Long saveId = memberService.join(member);
 		
 		// then
 		Member findMember = memberService.findOne(saveId).get();
@@ -53,9 +53,9 @@ class MemberServiceTest {
 		member2.setName("spring");
 		
 		// when
-		memberService.Join(member1);
+		memberService.join(member1);
 		
-		IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.Join(member2));
+		IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
 		
 		Assertions.assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
 		

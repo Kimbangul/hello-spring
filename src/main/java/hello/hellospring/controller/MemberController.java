@@ -1,8 +1,14 @@
 package hello.hellospring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import hello.hellospring.domain.Member;
 import hello.hellospring.service.MemberService;
 
 // 스프링 컨테이너에서 스프링 bean이 관리됨
@@ -10,7 +16,7 @@ import hello.hellospring.service.MemberService;
 
 @Controller
 public class MemberController {
-	private final MemberService memberService;
+	private MemberService memberService;
 	
 	// @Autowired private MemberService memberService; // 필드 주입
 	
@@ -29,4 +35,26 @@ public class MemberController {
 		this.memberService = memberService;
 	}
 	
+	@GetMapping("/members/new")
+	public String createForm() {
+		return "members/createMemberForm";
+	}
+
+	@PostMapping("/members/new")
+	public String create(MemberForm form) {
+		Member member = new Member();
+		
+		member.setName(form.getName());
+		memberService.join(member);
+		
+		return "redirect:/";
+	}
+	
+	@GetMapping("/members")
+	public String list(Model model) {
+		List<Member> members = memberService.findMembers();
+		model.addAttribute("members",members);
+		
+		return "members/memberList";
+	}
 }
